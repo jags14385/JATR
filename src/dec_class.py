@@ -2,10 +2,10 @@ from annt import SoftAssert as Assert
 from base_test_fixture import BaseTestFixture
 
 class AssertFixture(BaseTestFixture):
-    a = 3
     
     @classmethod
     def setUp(cls):
+        cls.a=2
         print "Setup method Test Level /Method Level"
         
     @classmethod
@@ -19,14 +19,4 @@ class AssertFixture(BaseTestFixture):
 class AssertTests:           
     @Assert    
     def test_hello(self):
-        Assert.assertEquals(11, 1)
-        Assert.assertEquals(11, 11)
-        Assert.assertEquals(AssertFixture.a, 2)
-  
-    @Assert 
-    def test_try(self):
-        print "Hello successfully run"    
-        
-    def run(self):
-        self.test_hello()  
-                  
+        Assert.assertEquals(AssertFixture.a, 21)
