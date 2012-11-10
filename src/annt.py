@@ -1,4 +1,3 @@
-import inspect
 assertion_status=[]
 
 class SoftAssert:
