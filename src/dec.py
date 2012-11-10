@@ -1,4 +1,4 @@
-from src.annt import SoftAssert as Assert
+from annt import SoftAssert as Assert
 #import runpy
 @Assert
 def hello():
