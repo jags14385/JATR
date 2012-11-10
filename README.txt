@@ -1,1 +1,1 @@
-This project is an demo pertaining to CI.
+Test Runner in Python.
