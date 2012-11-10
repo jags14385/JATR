@@ -16,8 +16,7 @@ class AssertTests:
 if __name__ == "__main__" :
     t=AssertTests()
 #
-    Utilities.get_test_case_names(t)
-    print "Emf"
+    Utilities.runTests(t)
 #    methodLIst=Utilities.get_method_names_from_obj(t)
 #    print methodLIst 
 #    t.run()

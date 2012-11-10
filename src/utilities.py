@@ -18,12 +18,20 @@ class Utilities:
         """
         This method allows to get all the test case names from an Test Class
         """
-        pattern = re.compile("^test_*")
+        regex="^^test_([a-z]|[0-9])*$"
         methodList=Utilities.get_method_names_from_obj(var_object)
-        
+        testCaseList=[]
         for method in methodList:
-            print pattern.search(method).group(0)
+            matchObj= re.match(regex,method)
+            if matchObj is not None:
+                testCaseList.append(matchObj.group(0))
+        return  testCaseList
     
+    @classmethod
+    def runTests(cls,var_object):
+        test_case_list=Utilities.get_test_case_names(var_object)
+        for test_case in test_case_list:
+            getattr(var_object,test_case)()
     @classmethod
     def discover_files(cls):
         pass
