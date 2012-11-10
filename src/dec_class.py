@@ -1,6 +1,7 @@
 from annt import SoftAssert as Assert
+from base_test_fixture import BaseTestFixture
 
-class AssertFixture:
+class AssertFixture(BaseTestFixture):
     a = 3
     
     @classmethod
@@ -14,10 +15,6 @@ class AssertFixture:
     @classmethod
     def tearDown(cls):
         print "TearDown method Test Level /Method Level"
-        
-    @classmethod
-    def tearDown_class(cls):
-        print "TearDown method Class Level"    
         
 class AssertTests:           
     @Assert    
