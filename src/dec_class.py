@@ -1,5 +1,5 @@
 from annt import SoftAssert as Assert
-from utilities import Utilities
+
 class AssertFixture:
     a = 3
     
@@ -16,7 +16,7 @@ class AssertFixture:
         print "TearDown method Test Level /Method Level"
         
     @classmethod
-    def teraDown_class(cls):
+    def tearDown_class(cls):
         print "TearDown method Class Level"    
         
 class AssertTests:           
@@ -33,6 +33,3 @@ class AssertTests:
     def run(self):
         self.test_hello()  
                   
-if __name__ == "__main__" :
-    t = AssertTests()
-    Utilities.runTests(t)

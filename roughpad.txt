@@ -1,0 +1,12 @@
+####################################
+#    k.setUp()
+#    path = inspect.getsourcefile(t.__class__)
+#    a = inspect.getmoduleinfo(path)
+#    print a
+#    b = inspect.getmodulename(path)
+#    print b
+#    c = __import__(b)
+#    print c
+#    d=c.AssertFixture()
+#    print d
+#################################

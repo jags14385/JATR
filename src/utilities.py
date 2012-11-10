@@ -1,4 +1,5 @@
 import re
+import inspect
 class Utilities:
     
     @classmethod
@@ -29,21 +30,32 @@ class Utilities:
     
     @classmethod
     def getFixture(cls, var_object):
+
+#        To get the class name
         test_class_handle = var_object.__class__
-        
-        point = str(test_class_handle).rfind(".") + 1
-        testcase= str(test_class_handle)[point:len(str(test_class_handle))]
-        testFixture = testcase+"Fixture"
-        return testFixture
+        point_position = str(test_class_handle).rfind(".") + 1
+        testcase= str(test_class_handle)[point_position:len(str(test_class_handle))]
+        common_name_pos=testcase.find("Tests")
+        testFixture = testcase[0:common_name_pos]+"Fixture"
+
+#        Inorder to get the module Name
+        src_file_path=inspect.getsourcefile(test_class_handle)
+        fixture_module=inspect.getmodulename(src_file_path)
+        module_import_handle=__import__(fixture_module)
+        strk="module_import_handle."+testFixture
+        objk=eval(strk)  
+        return objk
     
     @classmethod
     def runTests(cls, var_object):
         test_case_list = Utilities.get_test_case_names(var_object)
         fixture_obj=Utilities.getFixture(var_object)()
+        getattr(fixture_obj, 'setUp_class')()
         for test_case in test_case_list:
             getattr(fixture_obj, 'setUp')()
             getattr(var_object, test_case)()
-            
+            getattr(fixture_obj, 'tearDown')()
+        getattr(fixture_obj, 'tearDown_class')()
     @classmethod
     def discover_files(cls):
         pass
