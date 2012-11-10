@@ -4,7 +4,6 @@ assertion_status=[]
 class SoftAssert:
     
     def __init__(self, func):
-        t=inspect.getmodule(func)
         self.f = func
         
     def __call__(self):

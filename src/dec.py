@@ -1,5 +1,4 @@
 from annt import SoftAssert as Assert
-#import runpy
 @Assert
 def hello():
     Assert.assertEquals(1,1)
@@ -13,6 +12,3 @@ def hello2():
 if __name__ == "__main__" :
     hello()
     hello2()
-#    op=runpy.run_path("/Users/vaikuntj/Work/EclipseWS/MYexp/src/dec.py")
-#    print op
-#    print "Hi"
