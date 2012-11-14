@@ -1,5 +1,5 @@
-from annt import SoftAssert as Assert
-from base_test_fixture import BaseTestFixture
+from src.annt import SoftAssert as Assert
+from src.base_test_fixture import BaseTestFixture
 
 class AssertFixture(BaseTestFixture):
     
@@ -19,5 +19,5 @@ class AssertFixture(BaseTestFixture):
 class AssertTests:           
     @Assert    
     def test_hello(self):
-        Assert.assertEquals(AssertFixture.a, 721)
-        Assert.assertEquals(AssertFixture.a, 231)
+        Assert.assertEquals(AssertFixture.a, 241)
+        Assert.assertEquals(AssertFixture.a, 11)
