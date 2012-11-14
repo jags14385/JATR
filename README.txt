@@ -1,6 +1,6 @@
 Test Runner in Python.
 
-Rules::
+Guidelines::
 
 TestCases and corresponding Fixtures should be in the same .py file or module
 TestCases should end in Tests eg "AssertTests"
