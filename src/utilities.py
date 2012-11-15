@@ -41,20 +41,20 @@ class Utilities:
         
 #        Inorder to get the module Name <NEED TO BE REFACTORED>
         test_file_path = inspect.getsourcefile(test_class_handle)
-        testList = test_file_path.split(os.sep)
-        refList = inspect.getsourcefile(Utilities().__class__).split(os.sep)
-        finalList = []
-        for x in testList:
-            if x is testList[len(testList) - 1]:
-                finalList.append(x.split(".")[0])
+        test_path_list = test_file_path.split(os.sep)
+        refList = Constants.REFERENCE_DIR_PATH.split(os.sep)
+        final_referenced_list = []
+        for x in test_path_list:
+            if x is test_path_list[len(test_path_list) - 1]:
+                final_referenced_list.append(x.split(".")[0])
                 continue
             if x not in refList:
-                finalList.append(x)
-        if len(finalList) == 1 :
-            fixture_import_handle = __import__(Constants.DEFAULT_FOLDER + "." + ".".join(finalList[:]))
+                final_referenced_list.append(x)
+        if len(final_referenced_list) == 1 :
+            fixture_import_handle = __import__(".".join(final_referenced_list[:]))
         else:
-            fixture_import_handle = __import__(".".join(finalList[:]))
-        module_handle = getattr(fixture_import_handle, finalList[len(finalList) - 1]) 
+            fixture_import_handle = __import__(".".join(final_referenced_list[:]))
+        module_handle = getattr(fixture_import_handle, final_referenced_list[len(final_referenced_list) - 1]) 
         return getattr(module_handle, test_fixture_name)
     
     @classmethod
