@@ -1,5 +1,5 @@
 from src.utilities import Utilities
-from src.dec_class import  AssertTests
+from tests.tests2.test3.tests4.dec_class import  AssertTests
 #from tests.dec import AssertTests
 
 if __name__ == "__main__" :

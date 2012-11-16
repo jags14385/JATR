@@ -44,18 +44,21 @@ class Utilities:
         test_path_list = test_file_path.split(os.sep)
         refList = Constants.REFERENCE_DIR_PATH.split(os.sep)
         final_referenced_list = []
-        for x in test_path_list:
-            if x is test_path_list[len(test_path_list) - 1]:
-                final_referenced_list.append(x.split(".")[0])
+        for each_path in test_path_list:
+            if each_path is test_path_list[len(test_path_list) - 1]:
+                final_referenced_list.append(each_path.split(".")[0])
                 continue
-            if x not in refList:
-                final_referenced_list.append(x)
+            if each_path not in refList:
+                final_referenced_list.append(each_path)
         if len(final_referenced_list) == 1 :
             fixture_import_handle = __import__(".".join(final_referenced_list[:]))
         else:
             fixture_import_handle = __import__(".".join(final_referenced_list[:]))
-        module_handle = getattr(fixture_import_handle, final_referenced_list[len(final_referenced_list) - 1]) 
-        return getattr(module_handle, test_fixture_name)
+        
+        for element in final_referenced_list[1:len(final_referenced_list)]:    
+            module_handle = getattr(fixture_import_handle,element) 
+            fixture_import_handle=module_handle
+        return getattr(fixture_import_handle, test_fixture_name)
     
     @classmethod
     def runTests(cls, var_object):
