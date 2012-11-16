@@ -4,5 +4,5 @@ class Constants:
     TEST_CASE_CLASS_SUFFIX = "Tests"
     TEST_CASE_FIXTURE_SUFFIX = "Fixture"
     REFERENCE_DIR_PATH="/Users/vaikuntj/Work/Testing/JATR"
-    RESERVED_DIRECTORIES=['.git','runner','src']
+    RESERVED_DIRECTORIES=['.git','runner','_src']
     PATTERN="*.py"
