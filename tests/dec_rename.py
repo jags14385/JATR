@@ -1,4 +1,4 @@
-from annt import SoftAssert as Assert
+from _src.annt import SoftAssert as Assert
 @Assert
 def hello():
     Assert.assertEquals(1,1)

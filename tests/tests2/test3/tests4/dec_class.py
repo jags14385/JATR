@@ -1,5 +1,5 @@
-from src.annt import SoftAssert as Assert
-from src.base_test_fixture import BaseTestFixture
+from _src.annt import SoftAssert as Assert
+from _src.base_test_fixture import BaseTestFixture
 
 class AssertFixture(BaseTestFixture):
     
