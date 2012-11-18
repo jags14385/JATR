@@ -18,5 +18,9 @@ class AssertFixture(BaseTestFixture):
 class AssertTests:           
     @Assert    
     def test_hello(self):
-        Assert.assertEquals(AssertFixture.a, 241)
+        Assert.assertEquals(AssertFixture.a,241)
         Assert.assertEquals(AssertFixture.a, 1)
+        
+    @Assert     
+    def test_1234(self):
+        print "in 1234"
