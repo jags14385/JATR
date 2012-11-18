@@ -1,5 +1,6 @@
 from _src.annt import SoftAssert as Assert
 from _src.base_test_fixture import BaseTestFixture
+from _src.marker import Marker
 
 class AssertFixture(BaseTestFixture): 
     @classmethod
@@ -16,11 +17,12 @@ class AssertFixture(BaseTestFixture):
         print "TearDown method Test Level /Method Level"
         
 class AssertTests:           
-    @Assert    
+    @Marker('T2')
     def test_hello(self):
         Assert.assertEquals(AssertFixture.a,241)
         Assert.assertEquals(AssertFixture.a, 1)
         
-    @Assert     
-    def test_1234(self):
-        print "in 1234"
+    @Marker('T1')
+    def test_hello2(self):
+        Assert.assertEquals(AssertFixture.a,241)
+        Assert.assertEquals(AssertFixture.a, 1)

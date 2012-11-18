@@ -1,9 +1,9 @@
-from _src.utilities import Utilities
-from tests.dec import  AssertTests
-#from tests.dec import AssertTests
+from _src.marker import Marker
+
+@Marker()
+def test_marker():
+    print "K"
 
 if __name__ == "__main__" :
-    t = AssertTests()
-    Utilities.runTests(t)
-    print "hi"
-    
+    test_marker()
+    print "Done"

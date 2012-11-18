@@ -7,3 +7,4 @@ class Constants:
     RESERVED_DIRECTORIES=['.git','runner','_src','__pycache__']
     TEST_FILE_EXTENSION=[".py"]
     IGNORE_FILE_NAME=['__init__']
+    MARKER="T2"
