@@ -11,3 +11,6 @@ ToDo ::
 Make the above configurable
 Make the assertion configurable ie  Soft or Hard
 Port all the assert functionalities
+Integration with an BDD or creating an BDD for its integartion
+its own GUI
+Exception Handling
