@@ -12,5 +12,7 @@ Make the above configurable
 Make the assertion configurable ie  Soft or Hard
 Port all the assert functionalities
 Integration with an BDD or creating an BDD for its integartion
-its own GUI
+JATR's GUI
 Exception Handling
+Parametrization
+Eclipse Plugin for JATR
