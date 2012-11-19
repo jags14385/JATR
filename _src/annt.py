@@ -2,11 +2,12 @@ assertion_status = []
 
 class SoftAssert:
     
-    def __init__(self, func):
-        self.f = func
+    def __init__(self):
+        pass
         
-    def __call__(self):
-        self.test_name = self.f.__name__
+    def __call__(self, original_func):
+        self.test_name = original_func.__name__
+        self.f = original_func
         self.f(self)
         self.parseAssertions()
         verif_errs_list = globals().get('assertion_status')

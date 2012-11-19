@@ -8,8 +8,8 @@ class Marker(object):
     def __call__(self, original_func):
         def _inner_func(*args,**kwargs):
             if self.marker==Constants.MARKER:
-                sa = SoftAssert(original_func)
-                sa.__call__()
+                sa = SoftAssert()
+                sa.__call__(original_func)
             else:
                 print "THE MARKER IS NOT SPECIFIED FOR EXECUTION"
         return _inner_func 

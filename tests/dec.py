@@ -26,3 +26,9 @@ class AssertTests:
     def test_hello2(self):
         Assert.assertEquals(AssertFixture.a,241)
         Assert.assertEquals(AssertFixture.a, 1)
+
+    @Marker('T1')
+    def test_hello3(self):
+        Assert.assertEquals(AssertFixture.a,243)
+        Assert.assertEquals(AssertFixture.a, 2)
+        Assert.assertEquals(AssertFixture.a,2431)
