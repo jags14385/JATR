@@ -1,3 +1,4 @@
+from _src.comparator import _Comparator
 assertion_status = []
 
 class Verify:
@@ -13,14 +14,32 @@ class Verify:
         verif_errs_list = globals().get('assertion_status')
         del verif_errs_list[:]
         
-    @classmethod   
-    def verifyEquals(cls, expected, actual):
+    @classmethod
+    def _append_assertion_msg(self, status, expected, actual):
         msg = ""
-        if expected == actual:
+        if status == True:
             msg = "Status:True Expected:" + str(expected) + " Actual:" + str(actual)
         else:
             msg = "Status:False Expected:" + str(expected) + " Actual:" + str(actual)
         globals().get('assertion_status').append(msg)
+            
+    @classmethod   
+    def verifyEquals(cls, expected, actual):
+        if expected == actual:
+            status = True
+        else:
+            status = False
+        cls._append_assertion_msg(status, expected, actual)
+    
+    @classmethod        
+    def verifyTrue(cls, actual):
+        status=_Comparator._verify_bool_values(actual,True)
+        cls._append_assertion_msg(status, 'TRUE', actual)
+        
+    @classmethod        
+    def verifyFalse(cls, actual):
+        status=_Comparator._verify_bool_values(actual,False)
+        cls._append_assertion_msg(status, 'FALSE', actual)
                     
     def parseAssertions(self):
         assertion_status_list = globals().get('assertion_status')
