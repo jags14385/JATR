@@ -11,6 +11,5 @@ class Marker(object):
                 sa = SoftAssert()
                 sa.__call__(original_func)
             else:
-                print "THE MARKER IS NOT SPECIFIED FOR EXECUTION"
-        return _inner_func 
-        
+                pass
+        return _inner_func        

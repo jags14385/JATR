@@ -1,6 +1,6 @@
 assertion_status = []
 
-class SoftAssert:
+class Verify:
     
     def __init__(self):
         pass
@@ -14,7 +14,7 @@ class SoftAssert:
         del verif_errs_list[:]
         
     @classmethod   
-    def assertEquals(cls, expected, actual):
+    def verifyEquals(cls, expected, actual):
         msg = ""
         if expected == actual:
             msg = "Status:True Expected:" + str(expected) + " Actual:" + str(actual)
