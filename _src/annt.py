@@ -10,7 +10,7 @@ class Verify:
         self.test_name = original_func.__name__
         self.f = original_func
         self.f(self)
-        self.parseAssertions()
+        self._parseAssertions()
         verif_errs_list = globals().get('assertion_status')
         del verif_errs_list[:]
         
@@ -25,10 +25,7 @@ class Verify:
             
     @classmethod   
     def verifyEquals(cls, expected, actual):
-        if expected == actual:
-            status = True
-        else:
-            status = False
+        status=_Comparator._verify_equals(actual, expected)
         cls._append_assertion_msg(status, expected, actual)
     
     @classmethod        
@@ -41,7 +38,7 @@ class Verify:
         status=_Comparator._verify_bool_values(actual,False)
         cls._append_assertion_msg(status, 'FALSE', actual)
                     
-    def parseAssertions(self):
+    def _parseAssertions(self):
         assertion_status_list = globals().get('assertion_status')
         msg = ""
         if assertion_status_list is not None:

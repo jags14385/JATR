@@ -1,13 +1,13 @@
 from _src.annt import Verify
 from _src.base_test_fixture import BaseTestFixture
 from _src.marker import Marker
-from _src.parametrize import Param
 
 class AssertFixture(BaseTestFixture): 
     @classmethod
     def setUp(cls):
         cls.a = 2
         cls.list_num = [1, 2, 3]
+        cls.list_num1 = [1, 2, 3]
 #        print "Setup method Test Level /Method Level"
         
     @classmethod
@@ -33,10 +33,4 @@ class AssertTests:
     
     @Marker('T1')
     def test_hello3(self):
-        Verify.verifyEquals(AssertFixture.a, 243)
-        Verify.verifyEquals(AssertFixture.a, 2)
-        Verify.verifyEquals(AssertFixture.a, 2431)
-
-    @Param("hk")
-    def test_hello4(self):
-        print "K"
+        Verify.verifyEquals(AssertFixture.list_num, AssertFixture.list_num1)
