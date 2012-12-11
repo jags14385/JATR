@@ -1,4 +1,5 @@
 from _src.comparator import _Comparator
+from _src.reporter import Reporter, TestReport
 assertion_status = []
 
 class Verify:
@@ -12,6 +13,7 @@ class Verify:
         self.f(self)
         self._parseAssertions()
         verif_errs_list = globals().get('assertion_status')
+        Reporter.add_test_report(TestReport(self.test_name,self.status,verif_errs_list))
         del verif_errs_list[:]
         
     @classmethod
@@ -49,9 +51,6 @@ class Verify:
                     interim_msg = str(msg_list[1:])
                     msg = msg + interim_msg
             if msg.strip() is not None and msg.strip() != "":
-                print "TESTCASE:" + self.test_name + " FAILED"
-                print "TEST STATUS MSG: " + msg
+                self.status='FAIL'
             else:
-                
-                print "TESTCASE:" + self.test_name + " PASSED"
-                
+                self.status='PASS'
