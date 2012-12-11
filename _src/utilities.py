@@ -32,7 +32,7 @@ class Utilities:
     
     @classmethod
     def getFixture(cls, var_object):
-#        To get the class name
+#       To get the class name
         test_class_handle = var_object.__class__
         point_position = str(test_class_handle).rfind(".") + 1
         testcase = str(test_class_handle)[point_position:len(str(test_class_handle))]
@@ -41,6 +41,11 @@ class Utilities:
         
 #        Inorder to get the module Name <NEED TO BE REFACTORED>
         test_file_path = inspect.getsourcefile(test_class_handle)
+        fixture_import_handle=cls.get_fixture_from_path(test_file_path)
+        return getattr(fixture_import_handle, test_fixture_name)
+    
+    @classmethod
+    def get_fixture_from_path(cls,test_file_path):
         test_path_list = test_file_path.split(os.sep)
         refList = Constants.REFERENCE_DIR_PATH.split(os.sep)
         final_referenced_list = []
@@ -58,7 +63,8 @@ class Utilities:
         for element in final_referenced_list[1:len(final_referenced_list)]:    
             module_handle = getattr(fixture_import_handle,element) 
             fixture_import_handle=module_handle
-        return getattr(fixture_import_handle, test_fixture_name)
+        return fixture_import_handle
+    
     
     @classmethod
     def runTests(cls, var_object):
@@ -66,7 +72,5 @@ class Utilities:
         fixture_obj = Utilities.getFixture(var_object)()
         getattr(fixture_obj, 'setUp_class')()
         for test_case in test_case_list:
-            getattr(fixture_obj, 'setUp')()
             getattr(var_object, test_case)()
-            getattr(fixture_obj, 'tearDown')()
         getattr(fixture_obj, 'tearDown_class')()
