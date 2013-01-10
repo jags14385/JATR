@@ -1,6 +1,6 @@
 from _src.runner import TestRun
 from _src.reporter import Reporter
-from ConfigParser import SafeConfigParser
+#from ConfigParser import SafeConfigParser
 
 if __name__=='__main__':
     TestRun.executeTestRun()
