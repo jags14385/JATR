@@ -3,7 +3,6 @@ Test Runner in Python.
 Dependencies::
 
 > Python
-> Redis : easy_install redis
 
 Guidelines::
 
