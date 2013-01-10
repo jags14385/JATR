@@ -8,13 +8,16 @@ class AssertFixture(BaseTestFixture):
         cls.a = 2
         cls.list_num = [1, 2, 3]
         cls.list_num1 = [1, 2, 3]
+        print "2"
         
     @classmethod
     def setUp_class(cls):
+        print "1"
         pass
         
     @classmethod
     def tearDown(cls):
+        print "3"
         pass
             
 class AssertTests:         

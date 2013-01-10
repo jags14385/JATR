@@ -23,9 +23,10 @@ class TestRun:
                     common_name_pos = class_name_token.find(suffix)
                     if common_name_pos >= 0:
                         class_name=class_name_token[:common_name_pos] + suffix
+                        file_obj.close()
+                        return class_name
             file_obj.close()
-        return class_name
-
+        
     @classmethod
     def get_test_class(cls,test_path,file_name,test_class_name):
         test_path_list=test_path.split(os.sep)
