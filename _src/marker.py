@@ -17,13 +17,13 @@ class Marker(object):
                     test_fixture_name=TestRun.get_class_name(test_file_src_path,Constants.TEST_CASE_FIXTURE_SUFFIX)
                     fixture_import_handle=Utilities.get_fixture_from_path(test_file_src_path)
                     fixture_obj =getattr(fixture_import_handle, test_fixture_name)()
-                    getattr(fixture_obj, 'setUp')()
+                    getattr(fixture_obj, 'setup')()
                     sa = Verify()
                     sa.__call__(original_func)
 #                except AssertionError :
 #                    print "Assertion Error :("
 #                finally:
-                    getattr(fixture_obj, 'tearDown')()
+                    getattr(fixture_obj, 'teardown')()
             else:
                 pass
         return _inner_func        

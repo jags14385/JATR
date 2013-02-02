@@ -2,6 +2,7 @@ import os
 from _src.constants import Constants
 import tokenize
 from _src.utilities import Utilities
+from _src.reporter import Reporter
 
 class TestRun:
     
@@ -46,7 +47,7 @@ class TestRun:
         return test_class_import_reference
 
     @classmethod    
-    def executeTestRun(cls):    
+    def executeTestRun(cls):
         for directory in cls.get_directories(Constants.REFERENCE_DIR_PATH):
             for r, _, test_files in os.walk(Constants.REFERENCE_DIR_PATH + os.sep + directory):
                 for test_file in test_files:
@@ -55,3 +56,6 @@ class TestRun:
                         test_class_name = cls.get_class_name(r + os.sep + test_file,Constants.TEST_CASE_CLASS_SUFFIX)
                         test_class_instance=cls.get_test_class(r, file_name, test_class_name)()
                         Utilities.runTests(test_class_instance)
+            Reporter.test_results_display()
+                        
+                        

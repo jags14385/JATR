@@ -1,23 +1,22 @@
 from _src.annt import Verify
-from _src.base_test_fixture import BaseTestFixture
+from _src.base_test_fixture import TestCase
 from _src.marker import Marker
+from _src.constants import Constants
 
-class AssertFixture(BaseTestFixture): 
+class AssertFixture(TestCase): 
     @classmethod
-    def setUp(cls):
+    def setup(cls):
         cls.a = 2
         cls.list_num = [1, 2, 3]
         cls.list_num1 = [1, 2, 3]
-#        print "2"
+        setattr(Constants,'Exper',"gsgjh")
         
     @classmethod
-    def setUp_class(cls):
-#        print "1"
+    def setup_class(cls):
         pass
         
     @classmethod
-    def tearDown(cls):
-#        print "3"
+    def teardown(cls):
         pass
             
 class AssertTests:         

@@ -70,7 +70,7 @@ class Utilities:
     def runTests(cls, var_object):
         test_case_list = Utilities.get_test_case_names(var_object)
         fixture_obj = Utilities.getFixture(var_object)()
-        getattr(fixture_obj, 'setUp_class')()
+        getattr(fixture_obj, 'setup_class')()
         for test_case in test_case_list:
             getattr(var_object, test_case)()
-        getattr(fixture_obj, 'tearDown_class')()
+        getattr(fixture_obj, 'teardown_class')()
