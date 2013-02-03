@@ -2,9 +2,12 @@ import ConfigParser
 
 class TestRunConfig:
     
+    config_file_path=""
     def __init__(self):
         conf = ConfigParser.SafeConfigParser()
-        conf.read("/Users/vaikuntj/Work/Testing/JATR/conf/default.conf")
+        if len(str(TestRunConfig.config_file_path).strip())==0 :
+            pass # Need to add an exception class  <Customized Exception classes>
+        conf.read(TestRunConfig.config_file_path)
         self.conf = conf
 
     def get(self, item_name, default_value=None):
@@ -31,7 +34,7 @@ class TestRunConfig:
     @property
     def marker(self):
         """Default marker for tests"""
-        return self.get("MARKER","T1")
+        return self.get("MARKER",'T1')
    
     @property
     def ignore_file_name(self):
@@ -54,5 +57,5 @@ class TestRunConfig:
         return self.get("RESERVED_DIRECTORIES",['.git','runner','_src','__pycache__'])
         
 if __name__=='__main__':
-    print TestRunConfig().reference_dir_path
+    print TestRunConfig().marker
     

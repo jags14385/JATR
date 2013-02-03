@@ -1,7 +1,7 @@
 import re
 import inspect
 import os
-from _src.constants import Constants
+from _src.read_conf import TestRunConfig
 class Utilities:
     
     @classmethod
@@ -21,7 +21,7 @@ class Utilities:
         """
             This method allows to get all the test case names from an Test Class
         """
-        regex = Constants.TEST_DISCOVERY_REGEX
+        regex =TestRunConfig().test_discovery_regex
         methodList = Utilities.get_method_names_from_obj(var_object)
         testCaseList = []
         for method in methodList:
@@ -36,8 +36,8 @@ class Utilities:
         test_class_handle = var_object.__class__
         point_position = str(test_class_handle).rfind(".") + 1
         testcase = str(test_class_handle)[point_position:len(str(test_class_handle))]
-        common_name_pos = testcase.find(Constants.TEST_CASE_CLASS_SUFFIX)
-        test_fixture_name = testcase[0:common_name_pos] + Constants.TEST_CASE_FIXTURE_SUFFIX
+        common_name_pos = testcase.find(TestRunConfig().test_case_class_suffix)
+        test_fixture_name = testcase[0:common_name_pos] + TestRunConfig().test_case_fixture_suffix
         
 #        Inorder to get the module Name <NEED TO BE REFACTORED>
         test_file_path = inspect.getsourcefile(test_class_handle)
@@ -47,7 +47,7 @@ class Utilities:
     @classmethod
     def get_fixture_from_path(cls,test_file_path):
         test_path_list = test_file_path.split(os.sep)
-        refList = Constants.REFERENCE_DIR_PATH.split(os.sep)
+        refList = TestRunConfig().reference_dir_path.split(os.sep)
         final_referenced_list = []
         for each_path in test_path_list:
             if each_path is test_path_list[len(test_path_list) - 1]:
