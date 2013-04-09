@@ -1,14 +1,9 @@
-class Param:
-# under development  
-    def __init__(self, *args):
-        self.args = args
+class Param(object):
+    
+    def __init__(self,args):
+        self.data_params=args
     
     def __call__(self, original_func):
-        def _inner_func(*args,**kwargs):
-            print dir(args)
-        return _inner_func
-#            print original_func.__name__
-#            print original_func.func_globals['__name__']
-#            for arg in self.args:
-#                print arg
-        
+        for data_param in self.data_params:
+#            original_func(data_param)
+            print data_param

@@ -1,13 +1,13 @@
 import ConfigParser
 
-class TestRunConfig:
+class ReadConfig:
     
-    config_file_path=""
+    config_file_path="conf/default.conf"
     def __init__(self):
         conf = ConfigParser.SafeConfigParser()
-        if len(str(TestRunConfig.config_file_path).strip())==0 :
+        if len(str(ReadConfig.config_file_path).strip())==0 :
             pass # Need to add an exception class  <Customized Exception classes>
-        conf.read(TestRunConfig.config_file_path)
+        conf.read(ReadConfig.config_file_path)
         self.conf = conf
 
     def get(self, item_name, default_value=None):
@@ -55,7 +55,3 @@ class TestRunConfig:
     def reserved_directories(self):
         """List of directories which are to ignored"""
         return self.get("RESERVED_DIRECTORIES",['.git','runner','_src','__pycache__'])
-        
-if __name__=='__main__':
-    print TestRunConfig().marker
-    

@@ -2,7 +2,7 @@ import os
 import tokenize
 from _src.utilities import Utilities
 from _src.reporter import Reporter
-from _src.read_conf import TestRunConfig
+from _src.read_conf import ReadConfig
 
 class TestRun:
     
@@ -10,7 +10,7 @@ class TestRun:
     def get_directories(cls,path):
         discovered_directories = []
         for component in os.listdir(path):
-            if os.path.isdir(TestRunConfig().reference_dir_path + os.sep + component) and component not in TestRunConfig().reserved_directories:
+            if os.path.isdir(ReadConfig().reference_dir_path + os.sep + component) and component not in ReadConfig().reserved_directories:
                 discovered_directories.append(component)
         return discovered_directories
 
@@ -31,7 +31,7 @@ class TestRun:
     @classmethod
     def get_test_class(cls,test_path,file_name,test_class_name):
         test_path_list=test_path.split(os.sep)
-        ref_list = TestRunConfig().reference_dir_path.split(os.sep)
+        ref_list = ReadConfig().reference_dir_path.split(os.sep)
         final_referenced_list=[]
     
         for each_path in test_path_list:
@@ -48,13 +48,13 @@ class TestRun:
 
     @classmethod    
     def executeTestRun(cls,config_file_path):
-        setattr(TestRunConfig,'config_file_path',config_file_path)
-        for directory in cls.get_directories(TestRunConfig().reference_dir_path):
-            for r, _, test_files in os.walk(TestRunConfig().reference_dir_path + os.sep + directory):
+        setattr(ReadConfig,'config_file_path',config_file_path)
+        for directory in cls.get_directories(ReadConfig().reference_dir_path):
+            for r, _, test_files in os.walk(ReadConfig().reference_dir_path + os.sep + directory):
                 for test_file in test_files:
                     file_name, file_extension = os.path.splitext(test_file)
-                    if file_extension in TestRunConfig().test_file_extension and file_name not in TestRunConfig().ignore_file_name:
-                        test_class_name = cls.get_class_name(r + os.sep + test_file,TestRunConfig().test_case_class_suffix)
+                    if file_extension in ReadConfig().test_file_extension and file_name not in ReadConfig().ignore_file_name:
+                        test_class_name = cls.get_class_name(r + os.sep + test_file,ReadConfig().test_case_class_suffix)
                         test_class_instance=cls.get_test_class(r, file_name, test_class_name)()
                         Utilities.runTests(test_class_instance)
             Reporter.test_results_display()  
