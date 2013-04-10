@@ -1,8 +1,8 @@
 import os
 import tokenize
 from _src.utilities import Utilities
-from _src.reporter import Reporter
 from _src.read_conf import ReadConfig
+from _src.reporter import Reporter
 
 class TestRun:
     
@@ -57,4 +57,4 @@ class TestRun:
                         test_class_name = cls.get_class_name(r + os.sep + test_file,ReadConfig().test_case_class_suffix)
                         test_class_instance=cls.get_test_class(r, file_name, test_class_name)()
                         Utilities.runTests(test_class_instance)
-            Reporter.test_results_display()  
+        print Reporter.json_repr()
