@@ -2,10 +2,11 @@ import copy
 import json
 
 class TestReport:
-    def __init__(self, test_name, test_status, test_assertion_list):
+    def __init__(self, test_name, test_status, test_assertion_list,testfilepath):
         self.name = test_name
         self.status = test_status
         self.assertion_status_list = copy.deepcopy(test_assertion_list)
+        self.testfilepath = testfilepath
 
 class Reporter:
     test_report_list = []

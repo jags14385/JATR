@@ -12,8 +12,8 @@ class Marker(object):
     def __call__(self, original_func):
         
         def _inner_func(*args, **kwargs):
+            test_file_src_path = inspect.getsourcefile(original_func)
             if str(self.marker) == ReadConfig().marker :
-                    test_file_src_path = inspect.getsourcefile(original_func)
                     test_fixture_name = TestRun.get_class_name(test_file_src_path, ReadConfig().test_case_fixture_suffix)
                     fixture_import_handle = Utilities.get_fixture_from_path(test_file_src_path)
                     fixture_obj = getattr(fixture_import_handle, test_fixture_name)()
@@ -22,5 +22,5 @@ class Marker(object):
                     sa.__call__(original_func)
                     getattr(fixture_obj, 'teardown')()
             else:
-                Reporter.add_test_report(TestReport(original_func.__name__,"SKIPPED",[]))
+                Reporter.add_test_report(TestReport(original_func.__name__,"SKIPPED",[],test_file_src_path))
         return _inner_func        

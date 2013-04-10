@@ -1,5 +1,6 @@
 from _src.comparator import _Comparator
 from _src.reporter import Reporter, TestReport
+import inspect
 assertion_status = []
 
 class Verify:
@@ -12,8 +13,9 @@ class Verify:
         self.f = original_func
         self.f(self)
         self._parseAssertions()
+        test_file_src_path = inspect.getsourcefile(original_func)
         verif_errs_list = globals().get('assertion_status')
-        Reporter.add_test_report(TestReport(self.test_name,self.status,verif_errs_list))
+        Reporter.add_test_report(TestReport(self.test_name,self.status,verif_errs_list,test_file_src_path))
         del verif_errs_list[:]
         
     @classmethod
