@@ -1,4 +1,5 @@
 import copy
+import json
 
 class TestReport:
     def __init__(self, test_name, test_status, test_assertion_list):
@@ -14,8 +15,8 @@ class Reporter:
         return cls.test_report_list
     
     @classmethod
-    def add_test_report(cls, test_report_inst):
-        cls.test_report_list.append(test_report_inst)
+    def add_test_report(cls, test_report_instance):
+        cls.test_report_list.append(test_report_instance)
     
     @classmethod    
     def num_tests_executed(cls):
@@ -49,5 +50,11 @@ class Reporter:
                         msg = msg + interim_msg
                     if msg.strip() is not None and msg.strip() != "":
                         print "Assertions failed for : " + test.name + "\n" + msg
- 
-        
+    @classmethod
+    def json_repr(cls):
+        json_list=[]
+        for test_report in  cls.get_report_list():
+            json_list.append(test_report.__dict__)
+                
+        json_report = {"TEST_EXECUTION_REPORT":json_list}
+        return json.dumps(json_report)
