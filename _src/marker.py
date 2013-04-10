@@ -3,6 +3,7 @@ from _src.runner import TestRun
 from _src.utilities import Utilities
 from _src.annt import Verify
 from _src.read_conf import ReadConfig
+from _src.reporter import Reporter, TestReport
 
 class Marker(object):
     def __init__(self, marker_label=ReadConfig().marker):
@@ -21,5 +22,5 @@ class Marker(object):
                     sa.__call__(original_func)
                     getattr(fixture_obj, 'teardown')()
             else:
-                pass
+                Reporter.add_test_report(TestReport(original_func.__name__,"SKIPPED",[]))
         return _inner_func        
