@@ -6,14 +6,14 @@ from _src.read_conf import ReadConfig
 from _src.reporter import Reporter, TestReport
 
 class Marker(object):
-    def __init__(self, marker_label=ReadConfig().marker):
-        self.marker = marker_label
+    def __init__(self, *arg_label):
+        self.marker = arg_label
         
     def __call__(self, original_func):
         
         def _inner_func(*args, **kwargs):
             test_file_src_path = inspect.getsourcefile(original_func)
-            if str(self.marker) == ReadConfig().marker :
+            if ReadConfig().marker in self.marker :
                     test_fixture_name = TestRun.get_class_name(test_file_src_path, ReadConfig().test_case_fixture_suffix)
                     fixture_import_handle = Utilities.get_fixture_from_path(test_file_src_path)
                     fixture_obj = getattr(fixture_import_handle, test_fixture_name)()

@@ -23,7 +23,7 @@ class AssertTests:
         Verify.verifyEquals(AssertFixture.a, 241)
         Verify.verifyEquals(AssertFixture.a, 1)
         
-    @Marker('T1')
+    @Marker('T1','t2','tx9')
     def test_hello2(self):
         Verify.verifyEquals(AssertFixture.a, 2411)
         Verify.verifyEquals(AssertFixture.a, 1)
