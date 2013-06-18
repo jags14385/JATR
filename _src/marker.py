@@ -23,6 +23,8 @@ class Marker(object):
                         sa.__call__(original_func)
                     except AssertionError :
                         Reporter.add_test_report(TestReport(original_func.__name__,"FAILED",[traceback.format_exc()],test_file_src_path))
+                        verif_errs_list = globals().get('assertion_status')
+                        del verif_errs_list
                     except :
                         Reporter.add_test_report(TestReport(original_func.__name__,"Exception",[],test_file_src_path))
                     finally:

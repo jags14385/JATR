@@ -18,12 +18,12 @@ class AssertFixture(TestCase):
         pass
             
 class AssertTests:         
-    @Marker('T2')
+    @Marker('tx')
     def test_hello1(self):
         Verify.verifyEquals(AssertFixture.a, 241)
-        Verify.verifyEquals(AssertFixture.a, 1)
+        Verify.verifyEquals(AssertFixture.a, 1012)
         
-    @Marker('T1','t2','tx9')
+    @Marker('T1','t2','tx')
     def test_hello2(self):
         Verify.verifyEquals(AssertFixture.a, 2411)
         Verify.verifyEquals(AssertFixture.a, 1)
