@@ -21,13 +21,13 @@ class AssertTests:
     @Marker('tx')
     def test_hello1(self):
         Verify.verifyEquals(AssertFixture.a, 241)
+        assert 1==2
         Verify.verifyEquals(AssertFixture.a, 1012)
         
     @Marker('T1','t2','tx')
     def test_hello2(self):
         Verify.verifyEquals(AssertFixture.a, 2411)
         Verify.verifyEquals(AssertFixture.a, 1)
-        Verify.verifyEquals(AssertFixture.a, 11)
         
     @Marker('T1')
     def test_hello(self):
