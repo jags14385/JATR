@@ -15,8 +15,9 @@ ToDo ::
 > Make the above configurable
 > Make the assertion configurable ie  Soft or Hard
 > Port all the assert functionalities
-> Integration with an BDD or creating an BDD for its integartion
-> JATR's GUI
 > Exception Handling
 > Parametrization
+> Creating JATR package
 > Eclipse Plugin for JATR
+> Integration with an BDD or creating an BDD for its integartion
+> JATR's GUI
