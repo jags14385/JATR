@@ -17,7 +17,3 @@ ToDo ::
 > Port all the assert functionalities
 > Exception Handling
 > Parametrization
-> Creating JATR package
-> Eclipse Plugin for JATR
-> Integration with an BDD or creating an BDD for its integartion
-> JATR's GUI
